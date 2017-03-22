@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         View v;
 
-        backgroundSound = new BackgroundSound();
+        
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager
                 .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -46,10 +46,15 @@ public class MainActivity extends AppCompatActivity {
 				 * method you would use to setup whatever you want done once the
 				 * device has been shook.
 				 */
-                backgroundSound.execute();
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
+                new BackgroundSound().execute();
+//                 Intent intent = getIntent();
+//                 finish();
+//                 startActivity(intent);
+		try{
+                    setContentView(R.layout.activity_main);
+                }catch (Exception e){
+                    Log.e("this", e.toString());
+                }
             }
         });
     }
